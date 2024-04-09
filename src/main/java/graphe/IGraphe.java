@@ -11,7 +11,7 @@ public interface IGraphe extends IGrapheConst {
 	void oterSommet(String noeud);
 	void oterArc(String source, String destination);
 	
-	// construit un graphe vide a partir d'une chaine
+	// construit un graphe vide à partir d'une chaine
 	// au format "A-B(5), A-C(10), B-C(3), C-D(8), E:";
 	default void peupler(String str) {
 	    assert this.getSommets().isEmpty();
