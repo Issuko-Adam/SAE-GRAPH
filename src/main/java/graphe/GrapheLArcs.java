@@ -14,11 +14,9 @@ public class GrapheLArcs extends Graphe{
 
     @Override
     public void ajouterSommet(String noeud) {
-        if (contientSommet(noeud)){
-            throw new IllegalArgumentException("Le sommet est déjà présent dans le graphe : " + noeud);
+        if (!LSommet.contains(noeud)) {
+            LSommet.add(noeud);
         }
-
-        LSommet.add(noeud);
     }
 
     public void ajouterArc(String source, String destination, Integer valeur) {
@@ -35,11 +33,7 @@ public class GrapheLArcs extends Graphe{
 
     @Override
     public void oterSommet(String noeud) {
-        if (!contientSommet(noeud)){
-            throw new IllegalArgumentException("Le sommet " + noeud + "n'existe pas");
-        }
-
-        else {
+        if (contientSommet(noeud)){
             for (String s : LSommet){
                 //retire tous les arc predecesseurs/successeurs de noeud
                 oterArc(noeud,s);
