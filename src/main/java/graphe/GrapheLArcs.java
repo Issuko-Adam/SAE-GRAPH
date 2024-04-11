@@ -69,6 +69,18 @@ public class GrapheLArcs extends Graphe{
 
     @Override
     public List<String> getSommets() {
+        for (Arc a : LArcs) {
+            String source = a.getSource();
+            String destination = a.getDestination();
+
+            // Ajout des sommets s'ils ne sont pas déjà présents dans LSommet
+            if (!LSommet.contains(source)) {
+                LSommet.add(source);
+            }
+            if (!LSommet.contains(destination)) {
+                LSommet.add(destination);
+            }
+        }
         return LSommet;
     }
 
