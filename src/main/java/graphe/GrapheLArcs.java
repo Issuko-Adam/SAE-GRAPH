@@ -79,10 +79,6 @@ public class GrapheLArcs extends Graphe{
 
     @Override
     public List<String> getSucc(String sommet) {
-        if(!contientSommet(sommet)){
-            throw new IllegalArgumentException("Le sommet " + sommet + "n'existe pas");
-        }
-
         List<String> Succ = new ArrayList<>();
 
         for (Arc a : LArcs){
@@ -90,16 +86,11 @@ public class GrapheLArcs extends Graphe{
                 Succ.add(a.getDestination());
             }
         }
-
         return Succ;
     }
 
     @Override
     public int getValuation(String src, String dest) {
-        if (!contientArc(src, dest)){
-            throw new IllegalArgumentException("L'arc (" + src + "," + dest + ") n'existe pas");
-        }
-
         for (Arc a : LArcs) {
             if (a.getSource().equals(src) && a.getDestination().equals(dest)) {
                 return a.getValuation();
