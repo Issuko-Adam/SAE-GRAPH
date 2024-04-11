@@ -47,7 +47,7 @@ public class GrapheLArcs extends Graphe{
     @Override
     public void oterArc(String source, String destination) {
         if(!contientArc(source,destination)){
-            throw new IllegalArgumentException("L'arc (" + source + "," + destination +") n'existe pas");
+            throw new IllegalArgumentException("Aucun arc existe entre les sommets : " + source + "et" + destination);
         }
 
         else {
@@ -56,7 +56,6 @@ public class GrapheLArcs extends Graphe{
                     LArcs.remove(a);
                 }
             }
-
             throw new IllegalArgumentException("Sommet source et/ou sommet de destination introuvable : (" + source + ", " + destination + ")");
         }
     }
