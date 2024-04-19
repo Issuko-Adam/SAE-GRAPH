@@ -3,11 +3,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-public class GraphLAdj extends Graphe {
+
+public class GrapheLAdj extends Graphe {
 
     private Map<String, List<String>> listeAdjacence;
     private Map<String, Map<String, Integer>> valuations;
 
+    public GrapheLAdj(){
+        listeAdjacence=new HashMap<>();
+        valuations=new HashMap<>();
+    }
+    
     @Override
     public void ajouterSommet(String noeud) {
         if (!listeAdjacence.containsKey(noeud)) {
@@ -16,8 +22,7 @@ public class GraphLAdj extends Graphe {
         }
     }
 
-    @Override
-    public void ajouterArc(String source, String destination, int valeur) {
+    public void ajouterArc(String source, String destination, Integer valeur) {
         ajouterSommet(source);
         ajouterSommet(destination);
 
