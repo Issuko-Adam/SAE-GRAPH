@@ -56,8 +56,8 @@ public class GrapheLArcs extends Graphe{
                     LArcs.remove(a);
                 }
             }
-            throw new IllegalArgumentException("Sommet source et/ou sommet de destination introuvable : (" + source + ", " + destination + ")");
         }
+        throw new IllegalArgumentException("Sommet source et/ou sommet de destination introuvable : (" + source + ", " + destination + ")");
     }
 
     @Override
