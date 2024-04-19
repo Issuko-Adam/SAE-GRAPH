@@ -1,8 +1,9 @@
 package main.java.graphe;
 
 public class Arc {
-    private String source,destination;
-    private int valuation;
+    private final String source;
+    private final String destination;
+    private final int valuation;
 
     public Arc(String source, String destination, int valuation) {
         assert valuation >= 0;
