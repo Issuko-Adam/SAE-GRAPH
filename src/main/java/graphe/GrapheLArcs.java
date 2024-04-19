@@ -7,6 +7,7 @@ import java.util.Objects;
 public class GrapheLArcs extends Graphe{
     private ArrayList<Arc> LArcs; //liste des arcs
     private ArrayList<String> LSommet; //liste des sommets
+    
     public GrapheLArcs(){
         LArcs=new ArrayList<>();
         LSommet=new ArrayList<>();
@@ -21,7 +22,7 @@ public class GrapheLArcs extends Graphe{
 
     public void ajouterArc(String source, String destination, Integer valeur) {
         if (valeur < 0){
-            throw new IllegalArgumentException("La valeur ne doit pas être négative : " + valeur);
+            throw new IllegalArgumentException("La valeur ne doit pas être négatives : " + valeur);
         }
 
         if (contientArc(source, destination)){
@@ -33,31 +34,46 @@ public class GrapheLArcs extends Graphe{
 
     @Override
     public void oterSommet(String noeud) {
-        if (contientSommet(noeud)){
-            for (String s : LSommet){
-                //retire tous les arc predecesseurs/successeurs de noeud
-                oterArc(noeud,s);
-                oterArc(s,noeud);
+        if (contientSommet(noeud)) {
+            //Liste des arcs a supprimer
+            List<Arc> arcsASupprimer = new ArrayList<>();
+
+            //Trouve et stocke les arcs à supprimer
+            for (Arc a : LArcs) {
+                if (noeud.equals(a.getSource()) || noeud.equals(a.getDestination())) {
+                    arcsASupprimer.add(a);
+                }
             }
 
+            //Supprime les arcs stockés
+            LArcs.removeAll(arcsASupprimer);
+            //Supprime le sommet dans la liste
             LSommet.remove(noeud);
         }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        if(!contientArc(source,destination)){
-            throw new IllegalArgumentException("Aucun arc existe entre les sommets : " + source + "et" + destination);
+        boolean arcTrouve = false;
+
+        if (contientArc(source, destination)) {
+            for (Arc a : LArcs) {
+                if (a.getSource().equals(source) && a.getDestination().equals(destination)) {
+                    LArcs.remove(a);
+                    arcTrouve = true;
+                    break;
+                }
+            }
+
+            // Si aucun arc n'est trouvé après avoir parcouru tous les arcs
+            if (!arcTrouve) {
+                throw new IllegalArgumentException("Aucun arc existe entre les sommets : " + source + " et " + destination);
+            }
         }
 
         else {
-            for(Arc a : LArcs){
-                if (a.getSource().equals(source) && a.getDestination().equals(destination)){
-                    LArcs.remove(a);
-                }
-            }
+            throw new IllegalArgumentException("Sommet source et/ou sommet de destination introuvable : (" + source + ", " + destination + ")");
         }
-        throw new IllegalArgumentException("Sommet source et/ou sommet de destination introuvable : (" + source + ", " + destination + ")");
     }
 
     @Override
@@ -66,7 +82,7 @@ public class GrapheLArcs extends Graphe{
             String source = a.getSource();
             String destination = a.getDestination();
 
-            // Ajout des sommets s'ils ne sont pas déjà présents dans LSommet
+            //Ajoute les sommets s'ils ne sont pas déjà présents dans la liste
             if (!LSommet.contains(source)) {
                 LSommet.add(source);
             }
