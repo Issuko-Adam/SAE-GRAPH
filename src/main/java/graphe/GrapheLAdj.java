@@ -23,6 +23,14 @@ public class GrapheLAdj extends Graphe {
     }
 
     public void ajouterArc(String source, String destination, Integer valeur) {
+        if (valeur < 0){
+            throw new IllegalArgumentException("La valeur ne doit pas être négatives : " + valeur);
+        }
+
+        if (contientArc(source, destination)){
+            throw new IllegalArgumentException("L'arc (" + source + "," + destination + ") existe déjà entre les deux sommets");
+        }
+        
         ajouterSommet(source);
         ajouterSommet(destination);
 
@@ -43,9 +51,17 @@ public class GrapheLAdj extends Graphe {
 
     @Override
     public void oterArc(String source, String destination) {
+        if(!contientArc(source,destination)){
+            throw new IllegalArgumentException("Aucun arc existe entre les sommets : " + source + "et" + destination);
+        }
+        
         if (listeAdjacence.containsKey(source)) {
             listeAdjacence.get(source).remove(destination);
             valuations.get(source).remove(destination);
+        }
+
+        else{
+            throw new IllegalArgumentException("Sommet source et/ou sommet de destination introuvable : (" + source + ", " + destination + ")");
         }
     }
 
