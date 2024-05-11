@@ -17,10 +17,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import main.java.graphe.Dijkstra;
+import main.java.graphe.*;
 import org.junit.jupiter.api.Test;
 
 class IGrapheTest {
-	private final IGraphe[] graphes = { 
+	private final IGraphe[] graphes = {
 			new GrapheLArcs(), new GrapheLAdj(),
 			new GrapheMAdj()
 	};
@@ -124,7 +126,7 @@ class IGrapheTest {
                 Path file1 = iterator1.next();
                 Path file2 = iterator2.next();
 
-                IGraphe g = new GrapheHHAdj(); 
+                IGraphe g = new GrapheMAdj();
                 Arc arc = GraphImporter.importer(file1.toFile(), g);
 
                 List<Integer> listeEntiers = new ArrayList<>();
