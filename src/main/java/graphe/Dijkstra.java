@@ -1,52 +1,43 @@
 package main.java.graphe;
 
-import java.util.Map;
+import java.util.*;
 
 public class Dijkstra {
     public static void dijkstra(IGraphe g, String source, Map<String, Integer> dist, Map<String, String> prev) {
-        // Initialisation des distances et des précédents
+        // initialise les structures de données
+        Set<String> visite = new HashSet<>();
+        TreeMap<Integer, String> file = new TreeMap<>();
+
+        // initialise les distances et la file
         for (String sommet : g.getSommets()) {
             dist.put(sommet, Integer.MAX_VALUE);
             prev.put(sommet, null);
         }
+
         dist.put(source, 0);
+        file.put(0, source);
 
-        // Initialisation de l'ensemble des sommets non traités
-        while (!tousTraites(g, dist)) {
-            // Recherche du sommet non traité avec la plus petite distance
-            String u = sommetNonTraiteAuPlusPetitDist(g, dist);
+        while (!file.isEmpty()) {
+            // extrait le sommet avec la plus petite distance
+            Map.Entry<Integer, String> entree = file.pollFirstEntry();
+            String u = entree.getValue();
 
-            // Pour chaque voisin v du sommet sélectionné
-            for (String v : g.getSucc(u)) {
-                int alt = dist.get(u) + g.getValuation(u, v);
-                if (alt < dist.get(v)) {
-                    dist.put(v, alt);
-                    prev.put(v, u);
+            if (!visite.add(u)) {
+                continue; // nœud deja visite passe au suivant
+            }
+
+            // met a jour les distances des sommets voisins
+            for (String v : g.getSommets()) {
+                if (g.contientArc(u, v)) {
+                    int poids = g.getValuation(u, v);
+                    int distsommet = dist.get(u) + poids;
+                    if (distsommet < dist.get(v)) {
+                        dist.put(v, distsommet);
+                        prev.put(v, u);
+                        file.put(distsommet, v);
+                    }
                 }
             }
         }
-    }
-
-    // Vérifie si tous les sommets ont été traités
-    private static boolean tousTraites(IGraphe g, Map<String, Integer> dist) {
-        for (String sommet : g.getSommets()) {
-            if (dist.get(sommet) == Integer.MAX_VALUE) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Trouve le sommet non traité avec la plus petite distance
-    private static String sommetNonTraiteAuPlusPetitDist(IGraphe g, Map<String, Integer> dist) {
-        String minSommet = null;
-        int minDist = Integer.MAX_VALUE;
-        for (String sommet : g.getSommets()) {
-            if (dist.get(sommet) < minDist) {
-                minDist = dist.get(sommet);
-                minSommet = sommet;
-            }
-        }
-        return minSommet;
     }
 }
