@@ -39,5 +39,10 @@ public class Dijkstra {
                 }
             }
         }
+
+        for (String noeud : g.getSommets())
+            if (dist.get(noeud)==Integer.MAX_VALUE){
+                dist.remove(noeud);
+            }
     }
 }
