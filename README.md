@@ -3,7 +3,7 @@ GROUPE :
     - Adam
     - Nathan 
     - WU Mei-ling
-    - 
+    - Elias
     
 Classes de graphes codées :
     - GrapheLarcs
