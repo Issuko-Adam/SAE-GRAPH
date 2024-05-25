@@ -1,2 +1,13 @@
-SAE GRAPH - Periode D 2023/2024
-
+SAE GRAPHE - Periode D 2023/2024
+GROUPE :
+    - GRAINDORGE Adam
+    - GRAJEZYK Nathan 
+    - WU Mei-ling
+    - Elias
+    
+Classes de graphes codées :
+    - GrapheLarcs
+    - GrapheLadj
+    - GrapheHHadj
+    
+Est-ce que Dijkstra passe les tests fournis sur Moodle avec tous les graphes fournis ?
