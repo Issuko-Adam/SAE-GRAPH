@@ -3,7 +3,7 @@ GROUPE :
     - GRAINDORGE Adam
     - GRAJEZYK Nathan 
     - WU Mei-ling
-    - Elias
+    - BOUTEBAKH Elias
     
 Classes de graphes codées :
     - GrapheLarcs
