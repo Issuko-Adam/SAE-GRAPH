@@ -16,18 +16,18 @@ public class Dijkstra {
 
         while (!queue.isEmpty()) {
             String noeudactuel = queue.poll();
-            int currentDistance = dist.get(noeudactuel);
+            int distactuel = dist.get(noeudactuel);
 
             // sdistance actuelle est infinie, sort de la boucle
-            if (currentDistance == Integer.MAX_VALUE) {
+            if (distactuel == Integer.MAX_VALUE) {
                 break;
             }
 
             // parcourir les successeurs du noeud actuel
             for (String successeur : g.getSucc(noeudactuel)) {
-                int newDistance = currentDistance + g.getValuation(noeudactuel, successeur);
-                if (newDistance < dist.get(successeur)) {
-                    dist.put(successeur, newDistance);
+                int nouvelledist = distactuel + g.getValuation(noeudactuel, successeur);
+                if (nouvelledist < dist.get(successeur)) {
+                    dist.put(successeur, nouvelledist);
                     prev.put(successeur, noeudactuel);
                     queue.add(successeur);
                 }
