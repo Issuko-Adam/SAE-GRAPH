@@ -76,7 +76,7 @@ public class GrapheHHAdj extends Graphe {
         if (valeurs.containsKey(src) && valeurs.get(src).containsKey(dest)) {
             return valeurs.get(src).get(dest);
         }
-        return 0;  // Or throw an exception if you prefer
+        return 0;
     }
 
     @Override
