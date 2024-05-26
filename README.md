@@ -6,29 +6,65 @@
 ## Chargé de TP
 - [<img src="https://avatars.githubusercontent.com/u/128971727?v=4" width="16" height="16"> Boutebakh Elias (@kf-iut)](https://github.com/kf-iut)
 
+
 # Partie I
 
 - [x] **LArc**
-  - temporaire.
+  - On représente un graphe en stockant une liste d'arcs qui contiennent leurs sources, destinations et valuations.
   
-- [x] **Ladj**
-  - temporaire.
+- [x] **LAdj**
+  - Chaque sommet est associé à une liste de ses successeurs. Donc pour tout sommet ou il y a un arc sortant.
   
-- [x] **HHadh**
-  - temporaire.
+- [x] **HHAdj**
+  - On représente un graphe grâce à une hashmap d'hashmaps. Chaque sommet possède une map contenant les successeurs du sommet et leurs valuations.
+
 
 # Partie II
 
-## Quels tests passent Dijkstra ?
+Nous avons implémenté et validé les tests suivants pour l'algorithme Djikstra, en fonction des différents types de graphes :
 
-Nous avons implémentés les types de graphe ci-dessous pour tester Djikstra :
+### Dossier "Autres"
 
-1. **Autres** : celui-ci est passé sans diff
-2. **Barabasi** : 
-3. **Orig** : 1M
-4. **Full** :
+- **MAdj**
+- **HHAdj**
+- **LAdj**
+- **LArc**
 
-Dans la globalité, après avoir fait plusieurs algorithmes différents, tous les types de graphes sont testés sans problème.
+### Dossier "Orig" (en entier)
+
+- **HHAdj**
+- **LAdj**
+
+### Dossier "Orig" (taille < 10 000)
+
+- **MAdj** : Trop long
+
+### Dossier "Orig" (taille < 100 000)
+
+- **LArc** : Trop long
+
+### Dossier "Barabasi" (en entier)
+
+- **HHAdj**
+- **LAdj**
+
+### Dossier "Barabasi" (taille < 10 002)
+
+- **MAdj**
+
+### Dossier "Barabasi" (taille < 100 002)
+
+- **LArcs**
+
+### Dossier "Full"
+
+- **LAdj**
+- **HHAdj**
+- **MAdj**
+
+### Dossier "Full" (taille < 501)
+
+- **LArc**
 
 # Architecture
 
