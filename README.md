@@ -32,8 +32,9 @@ Dans la globalité, après avoir fait plusieurs algorithmes différents, tous le
 
 # Architecture
 
-![Architecture du projet](chemin/vers/votre/image.png)
+![architecture](https://github.com/Issuko-Adam/SAE-GRAPH/assets/100547995/9eb6e497-49ec-4eac-b7c4-b33634ba4925)
 
 ## Performances
 
 - [performance.pdf](https://github.com/Issuko-Adam/SAE-GRAPH/files/15448207/performance.pdf)
+
